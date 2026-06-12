@@ -1,32 +1,39 @@
 # Diabetic Retinopathy Detection using CNN
 
-A deep learning pipeline for automated detection and classification of **Diabetic Retinopathy (DR)** from retinal fundus images, built with PyTorch.
+A deep learning pipeline for automated 5-class classification of Diabetic Retinopathy from retinal fundus images, built with PyTorch and transfer learning (ResNet18).
 
-## Motivation
-Diabetic Retinopathy affects a significant proportion of individuals with long-standing diabetes and is a leading cause of preventable blindness. Manual interpretation of retinal images is time-consuming and subject to human error. This project develops an automated CNN-based classification system to assist healthcare professionals in accurate, efficient DR screening.
+## Results
+- **Test Accuracy: 83%**
+- **Validation Accuracy: 80.69%**
 
-## Problem Statement
-This project classifies retinal fundus images into:
+| Class | F1 Score |
+|-------|----------|
+| No_DR | 0.98 |
+| Moderate | 0.77 |
+| Mild | 0.67 |
+| Proliferate_DR | 0.54 |
+| Severe | 0.34 |
 
-| Label | Class |
-|-------|-------|
-| 0 | Diabetic Retinopathy |
-| 1 | No Diabetic Retinopathy |
+## Dataset
+Diabetic Retinopathy 224x224 (2019 Data) from Kaggle
+3,662 retinal fundus images across 5 severity classes
 
-## Key Technical Contributions
-- **Custom Dataset Class:** Handles CSV-based label mapping instead of standard folder-structured datasets
-- **Data Augmentation:** Random flips, rotation, and ImageNet normalization
-- **Model Architectures:** Custom CNN + Transfer Learning (ResNet18)
-- **Training Strategy:** Adam optimizer with ReduceLROnPlateau scheduler and best model checkpointing
+## Model
+Pretrained ResNet18 with fine-tuned classification head for 5-class DR grading
+
+## Training
+- Train/Val/Test split: 70/15/15
+- Optimizer: Adam (lr=0.001)
+- Scheduler: ReduceLROnPlateau
+- Epochs: 10
+- Hardware: GPU (CUDA)
 
 ## Technologies
-- Python 3.10+, PyTorch 2.0+, TorchVision
-- scikit-learn, pandas, matplotlib, seaborn
+- Python, PyTorch, TorchVision, scikit-learn
 
 ## Author
 **Mariam Khamis Madata**
 MSc Data Science (First Class) - Chandigarh University
-Co-author: *Emerging of Machine Learning and Deep Learning Technology: Addressing in Intelligent Wireless Network Optimization* (peer-reviewed)
 
 ## Status
-Active Development - data pipeline complete, model training in progress.
+Training complete. Evaluation done.
